@@ -1,3 +1,32 @@
 .lease_container {
-    background-color: #282c34;
+  width: 800px;
+  margin: 0 auto;
+
+  >div:first-child {
+    font-weight: bold;
+  }
+
+  .header,
+  >div>div {
+    display: grid;
+    grid-template-columns: 1fr 300px 200px;
+  }
+}
+
+.newLeases {
+  .line {
+    background-color: green;
+  }
+}
+
+.removedLeases {
+  .line {
+    background-color: red;
+  }
+}
+
+.loading_indicator {
+  height: 20px;
+  text-align: center;
+  margin: 20px 0;
 }
