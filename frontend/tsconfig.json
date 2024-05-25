@@ -1,0 +1,59 @@
+{
+    // "compilerOptions": {
+    //     "strict": true,
+    //     "target": "ESNext",
+    //     "module": "ESNext",
+    //     "moduleResolution": "node",
+    //     "allowSyntheticDefaultImports": true,
+    //     "esModuleInterop": true,
+    //     "jsx": "preserve",
+    //     "jsxImportSource": "solid-js",
+    //     "types": [
+    //         "vite/client"
+    //     ],
+    //     "noEmit": true,
+    //     "isolatedModules": true,
+    // }
+    "compilerOptions": {
+        "strict": true,
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js",
+        "types": [
+            "vite/client"
+        ],
+        "noEmit": true,
+        "isolatedModules": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+    }
+    // "compilerOptions": {
+    //     "strict": true,
+    //     "target": "ES2020",
+    //     "module": "ESNext",
+    //     "lib": [
+    //         "DOM",
+    //         "DOM.Iterable",
+    //         "ESNext"
+    //     ],
+    //     "skipLibCheck": true,
+    //     "moduleResolution": "bundler",
+    //     "allowSyntheticDefaultImports": true,
+    //     "esModuleInterop": true,
+    //     "jsx": "preserve",
+    //     "jsxImportSource": "solid-js",
+    //     "types": [
+    //         "vite/client"
+    //     ],
+    //     "noEmit": true,
+    //     "emitDecoratorMetadata": true,
+    //     "isolatedModules": true,
+    //     "experimentalDecorators": true,
+    //     "useDefineForClassFields": false,
+    //     "resolveJsonModule": true
+    // }
+}

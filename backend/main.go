@@ -23,9 +23,9 @@ func (lease Lease4) ExpiresAt() int64 {
 }
 
 type Lease4Dto struct {
-	IPAddress string `json:"ip-address"`
-	HWAddress string `json:"hw-address"`
-	ExpiresAt int64  `json:"expires-at"`
+	IPAddress string `json:"ipAddress"`
+	HWAddress string `json:"hwAddress"`
+	ExpiresAt int64  `json:"expiresAt"`
 }
 
 type Lease4Response struct {
@@ -37,7 +37,6 @@ type Lease4Response struct {
 
 func hello(w http.ResponseWriter, req *http.Request) {
 
-	// URL of the Kea control agent API endpoint
 	url := "http://172.16.0.1:8010/"
 
 	// JSON request payload to get all IPv4 leases
@@ -109,13 +108,14 @@ func hello(w http.ResponseWriter, req *http.Request) {
 		// 	time.Unix(lease.ExpiresAt(), 0).String())
 	}
 
-    response, err := json.Marshal(responses)
-    if err != nil {
-        log.Fatalf("Error marshalling JSON response: %v", err)
-    }
+	response, err := json.Marshal(responses)
+	if err != nil {
+		log.Fatalf("Error marshalling JSON response: %v", err)
+	}
 
-    w.Header().Set("Content-Type", "application/json")
-    w.Write(response)
+	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*") // URL of the Kea control agent API endpoint
+	w.Write(response)
 
 }
 
@@ -130,7 +130,7 @@ func headers(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 
-	http.HandleFunc("/hello", hello)
+	http.HandleFunc("/api/ipv4-leases", hello)
 	http.HandleFunc("/headers", headers)
 
 	http.ListenAndServe(":8090", nil)
