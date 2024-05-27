@@ -53,5 +53,8 @@ func main() {
 
 	http.HandleFunc("/api/ipv4-leases", leases)
 
+	fs := http.FileServer(http.Dir("./static"))
+	http.Handle("/", fs)
+
 	http.ListenAndServe(":8090", nil)
 }
