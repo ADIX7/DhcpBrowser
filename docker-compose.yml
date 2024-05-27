@@ -1,0 +1,8 @@
+services:
+  dhcp-browser:
+    image: adix7/dhcpbrowser
+    build:
+      context: .
+      dockerfile: Containerfile
+    ports:
+      - "8090:8090"

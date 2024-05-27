@@ -3,10 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/spf13/viper"
 	"log"
 	"net/http"
-
-	"github.com/spf13/viper"
 )
 
 type Config struct {
@@ -32,6 +31,7 @@ func leases(w http.ResponseWriter, req *http.Request) {
 
 func main() {
 	viper.SetEnvPrefix("DHCPBROWSER")
+	viper.BindEnv("KEACONTROLAGENTURL")
 	viper.AutomaticEnv()
 
 	viper.SetConfigName("config")
@@ -39,9 +39,6 @@ func main() {
 	viper.SetConfigType("yaml")
 
 	err := viper.ReadInConfig() // Find and read the config file
-	if err != nil {             // Handle errors reading the config file
-		panic(fmt.Errorf("fatal error config file: %w", err))
-	}
 
 	err = viper.Unmarshal(&config)
 
