@@ -9,14 +9,6 @@ COPY backend/* ./
 
 RUN go build -o /dhcpbrowser
 
-FROM alpine:3.13 as backend
-
-COPY --from=backend_build /dhcpbrowser /dhcpbrowser
-
-EXPOSE 8090
-
-CMD [ "/dhcpbrowser" ]
-
 # Frontend
 FROM node:20-alpine AS frontend_build
 WORKDIR /app
@@ -32,5 +24,11 @@ RUN ls
 RUN pnpm build
 
 # Final
-FROM backend as final
+FROM scratch AS final
+
+COPY --from=backend_build /dhcpbrowser /dhcpbrowser
 COPY --from=frontend_build /app/dist /static
+
+EXPOSE 8090
+
+CMD [ "/dhcpbrowser" ]
